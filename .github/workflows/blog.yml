@@ -15,7 +15,7 @@ jobs:
         token: ${{ secrets.BLOG_ACCESS_TOKEN }}
         path: blog-system
     - name: Overwrite content
-      run: yarn --frozen-lockfile
+      run: cp -rf content blog-system/
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
