@@ -1,0 +1,66 @@
+////
+The MIT License (MIT)
+
+Copyright (c) 2015 Gatsbyjs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+////
+= Hello World
+:author: Gatsby
+:!email:
+:revnumber: v1.0.0
+:revdate: 2015-05-01T22:12:03.284Z
+:reremark: First Edition.
+:page-creation-date: 2015-05-01T22:12:03.284Z
+:page-tags: [life, "2019", zoos]
+:page-author-url: https://www.gatsbyjs.org
+:page-author-twitter: gatsbyjs
+
+This is my first post on my new fake blog! How exciting!
+
+I'm sure I'll write a lot more interesting things in the future.
+
+Oh, and here's a great quote from this Wikipedia on
+link:http://en.wikipedia.org/wiki/Salted_duck_egg[salted duck eggs, window=_blank].
+
+:cc-sa-30-url: https://creativecommons.org/licenses/by-sa/3.0/
+:quote-attributed: 'link:{cc-sa-30-url}[Creative Commons Attribution-ShareAlike 3.0 Unported License, window=_blank] link:https://en.wikipedia.org/w/index.php?title=Salted_duck_egg&action=history[Authors, window=_blank]'
+:quote-info: 'Wikipedia articles link:https://en.wikipedia.org/wiki/Salted_duck_egg[Salted duck egg, window=_blank]'
+[quote, {quote-attributed}, {quote-info}]
+____
+A salted duck egg is a Chinese preserved food product made by soaking duck
+eggs in brine, or packing each egg in damp, salted charcoal. In Asian
+supermarkets, these eggs are sometimes sold covered in a thick layer of salted
+charcoal paste. The eggs may also be sold with the salted paste removed,
+wrapped in plastic, and vacuum packed. From the salt curing process, the
+salted duck eggs have a briny aroma, a gelatin-like egg white and a
+firm-textured, round yolk that is bright orange-red in color.
+____
+
+
+:quote-attributed: 'link:{cc-sa-30-url}[Kguirnela at English Wikipedia [CC BY-SA 3.0\], window=_blank]'
+:quote-info: 'link:https://en.wikipedia.org/wiki/Salted_duck_egg[Red salt eggs sold in the Philippines., window=_blank]'
+[quote, {quote-attributed}, {quote-info}]
+____
+image:{imagesdir}/salty_egg.jpg[Chinese Salty Egg, link={imagesdir}/salty_egg.jpg]
+____
+
+== LICENSE
+
+This document is licensed under link:{cc-sa-30-url}[CC-BY-SA 3.0, window=_blank].
