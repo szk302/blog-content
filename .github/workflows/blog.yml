@@ -1,0 +1,93 @@
+name: deploy-blog
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ./node_modules
+        key: ${{ runner.OS }}-npm-${{ hashFiles('**/yarn.lock') }}
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    - name: test
+      run: yarn test
+      env:
+        ARTICLES_REPOSITORY: szk302/blog-content
+        CI: true
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout blog-system
+      uses: actions/checkout@v2
+      with:
+        repository: szk302/blog-system
+        path: blog-system
+    - name: Overwrite content
+      run: yarn --frozen-lockfile
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ./node_modules
+        key: ${{ runner.OS }}-npm-${{ hashFiles('**/yarn.lock') }}
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+      working-directory: ./blog-system
+    - name: build
+      run: yarn build
+      working-directory: ./blog-system
+      env:
+        ARTICLES_REPOSITORY: szk302/blog-contents
+        CI: true
+    - name: Upload public
+      if: matrix.node-version == '14.x'
+      uses: actions/upload-artifact@v1
+      with:
+        name: public
+        path: blog-system/public
+
+  deploy:
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout blog
+      uses: actions/checkout@v2
+      with:
+        repository: szk302/blog
+        path: blog
+    - name: Download public
+      uses: actions/download-artifact@v1
+      with:
+        name: public
+    - name: Overwrite
+      run: cp -rf public/* blog/
+    - name: Set GitConfig
+      run: |
+        git config --local user.email "69619077+szk302@users.noreply.github.com"
+        git config --local user.name "s"
+      working-directory: ./blog
+    - name: Commit files
+      run: |
+        git add .
+        git commit -m "Update blog" -a
+        git pull
+        git push origin master

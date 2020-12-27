@@ -1,0 +1,51 @@
+= DockerDesktop出始めるDocker
+
+:revdate: 2020-11-23
+// :revdate: 2020-11-23T10:36:23+0900
+:description: DockerDesktopをインストールしてDocker環境を整える
+:page-tags: ['Docker']
+
+
+最近のDockerDesktopはWSLを利用するようになったらしい。 +
+Windows10(Home)環境でDockerDesktopをインストールしてDocker環境を整える。 +
+※参考のリンクの手順を実行しているだけ
+
+
+== インストール
+
+. WSLのインストール
+. Docker Desktopのインストール
+
+=== 1. WSLのインストール
+
+. OSバージョンを確認。(バージョン 1903 以降、 ビルド 18362 以上) + 
+バージョンが古い場合は更新する
+. Linux用 Windows サブシステムを有効にする. +
+管理者権限で起動したPowershellで以下のコマンドを実行 + 
+`dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart`
+. WSL 2 に更新する +
+管理者権限で起動したPowershellで以下のコマンドを実行 +
+`dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart`
+. Linux カーネル更新プログラム パッケージをダウンロードしてインストールする
+- https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi[https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi]
+. WSL 2 を既定のバージョンとして設定
+管理者権限で起動したPowershellで以下のコマンドを実行 +
+`wsl --set-default-version 2`
+. https://aka.ms/wslstore[Microsoft Store]から好きなディストリビューションを選びインストールする。 + 
+ここでは https://www.microsoft.com/store/apps/9p804crf0395[Alpine WSL] を使用
+. Alpineを起動
+
+=== 2. Docker Desktopのインストール
+
+. https://hub.docker.com/?overlay=onboarding[Docker Hub]にログインし、Docker Desktopをダウンロードしインストール
+. タスクトレイのDockerDesktopアイコンがブルー(赤の場合は問題発生)であることを確認
+. タスクトレイのDockerDesktopを起動し起動できることを確認
+. コマンドプロンプトから `docker run -d -p 80:80 docker/getting-started` を実行し、コンテナが起動できることを確認
+. http://localhost:80[http://localhost:80]にアクセスできることを確認
+. DockerDesktopから停止ボタン・ゴミ箱ボタンで削除
+
+== 参考
+
+- https://docs.microsoft.com/ja-jp/windows/wsl/install-win10[Windows 10 用 Windows Subsystem for Linux のインストール ガイド]
+- https://docs.docker.jp/docker-for-windows/install-windows-home.html[Windows Home に Docker Desktop をインストール]
+
